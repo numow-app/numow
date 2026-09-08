@@ -3,471 +3,1059 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>نمو — نمو حسابك على انستقرام</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Almarai:wght@400;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#120E1B;
-    --card:#1C1629;
-    --card-hi:#251D38;
-    --violet:#8B5CF6;
-    --coral:#FB7185;
-    --amber:#FBBF63;
-    --text:#F3EFFA;
-    --muted:#9089A8;
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  body{
-    background:radial-gradient(circle at 50% -10%, #2a1e42 0%, #120E1B 55%);
-    min-height:100vh; display:flex; align-items:center; justify-content:center;
-    padding:24px 12px; font-family:'IBM Plex Sans Arabic', sans-serif; color:var(--text);
-  }
-  .phone{
-    width:390px; max-width:100%; background:var(--bg); border-radius:36px;
-    border:1px solid #ffffff14; box-shadow:0 40px 80px -20px #00000080, inset 0 0 0 1px #ffffff08;
-    overflow:hidden; position:relative;
-  }
-  .notch{ position:absolute; top:0; left:50%; transform:translateX(-50%); width:120px; height:22px; background:#000; border-radius:0 0 16px 16px; z-index:5; }
-  .screen{ padding:44px 20px 30px; min-height:780px; }
+<title>نمو 2.0 — نمو حقيقي</title>
 
-  .top-row{ display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:22px; }
-  .logo{ display:flex; align-items:center; gap:8px; }
-  .logo-mark{ width:34px; height:34px; border-radius:11px; background:linear-gradient(135deg,var(--violet),var(--coral)); display:flex; align-items:center; justify-content:center; font-size:16px; }
-  .logo-txt{ font-family:'Almarai'; font-weight:800; font-size:17px; }
-  .avatar{ width:38px; height:38px; border-radius:12px; background:var(--card-hi); display:flex; align-items:center; justify-content:center; font-size:16px; }
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#080711;
+  --card:#121020;
+  --card2:#18152a;
+  --line:#29243d;
+  --purple:#8b5cf6;
+  --pink:#fb7185;
+  --cyan:#22d3ee;
+  --green:#4ade80;
+  --gold:#fbbf63;
+  --text:#f7f5ff;
+  --muted:#9791ad;
+}
+
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 80% 0%,#302052 0,transparent 28%),
+    radial-gradient(circle at 0% 70%,#17253a 0,transparent 22%),
+    var(--bg);
+  color:var(--text);
+  font-family:Arial,Tahoma,sans-serif;
+}
+
+button,input,select,textarea{font:inherit}
+
+button{cursor:pointer}
+
+.app{
+  min-height:100vh;
+  display:flex;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+  position:fixed;
+  right:0;
+  top:0;
+  bottom:0;
+  width:245px;
+  padding:22px 15px;
+  background:#0c0a16eF;
+  border-left:1px solid var(--line);
+  z-index:20;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:5px 8px 28px;
+}
+
+.logoIcon{
+  width:45px;
+  height:45px;
+  border-radius:15px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(135deg,var(--purple),var(--pink));
+  box-shadow:0 0 30px #8b5cf644;
+  font-size:23px;
+}
+
+.logo strong{
+  font-size:22px;
+}
+
+.logo small{
+  display:block;
+  color:var(--cyan);
+  margin-top:3px;
+}
+
+.nav{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+
+.nav button{
+  width:100%;
+  padding:13px;
+  border:0;
+  border-radius:13px;
+  background:transparent;
+  color:var(--muted);
+  text-align:right;
+  transition:.2s;
+}
+
+.nav button:hover,
+.nav button.active{
+  color:#fff;
+  background:#8b5cf61c;
+}
+
+.nav button.active{
+  border-right:3px solid var(--purple);
+}
+
+.sideBottom{
+  position:absolute;
+  bottom:20px;
+  right:15px;
+  left:15px;
+  padding:14px;
+  border:1px solid var(--line);
+  background:var(--card);
+  border-radius:15px;
+}
+
+.online{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  color:var(--muted);
+  font-size:12px;
+}
+
+.dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 12px var(--green);
+}
+
+/* MAIN */
+
+.main{
+  width:calc(100% - 245px);
+  margin-right:245px;
+  padding:28px;
+}
+
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:22px;
+}
+
+.top h1{
+  font-size:28px;
+}
+
+.top p{
+  color:var(--muted);
+  margin-top:6px;
+}
+
+.account{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:8px 12px;
+  border:1px solid var(--line);
+  background:var(--card);
+  border-radius:13px;
+}
+
+.avatar{
+  width:37px;
+  height:37px;
+  border-radius:11px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(135deg,var(--purple),var(--pink));
+}
+
+/* SECTIONS */
+
+.section{
+  display:none;
+}
+
+.section.active{
+  display:block;
+}
+
+/* HERO */
+
+.hero{
+  position:relative;
+  overflow:hidden;
+  padding:27px;
+  border-radius:24px;
+  border:1px solid #ffffff12;
+  background:
+    linear-gradient(135deg,#21183a,#121020);
+  margin-bottom:18px;
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  width:240px;
+  height:240px;
+  left:-90px;
+  top:-100px;
+  background:#8b5cf622;
+  border-radius:50%;
+  filter:blur(25px);
+}
+
+.hero small{
+  color:var(--gold);
+  position:relative;
+  z-index:1;
+}
+
+.hero h2{
+  position:relative;
+  z-index:1;
+  font-size:27px;
+  margin:9px 0;
+}
+
+.hero p{
+  position:relative;
+  z-index:1;
+  color:var(--muted);
+  line-height:1.8;
+  max-width:700px;
+}
+
+.primary{
+  border:0;
+  color:white;
+  padding:13px 20px;
+  border-radius:13px;
+  background:linear-gradient(135deg,var(--purple),var(--pink));
+  box-shadow:0 10px 30px #8b5cf633;
+}
+
+.hero .primary{
+  margin-top:17px;
+  position:relative;
+  z-index:1;
+}
+
+/* STATS */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:13px;
+  margin-bottom:18px;
+}
+
+.card{
+  background:#121020ed;
+  border:1px solid var(--line);
+  border-radius:19px;
+  padding:19px;
+}
+
+.statTitle{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.statValue{
+  font-size:27px;
+  font-weight:bold;
+  margin:10px 0;
+}
+
+.green{
+  color:var(--green);
+  font-size:12px;
+}
+
+/* GRID */
+
+.grid{
+  display:grid;
+  grid-template-columns:1.4fr 1fr;
+  gap:15px;
+}
+
+.cardHead{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:18px;
+}
+
+.cardHead h3{
+  font-size:17px;
+}
+
+.badge{
+  color:var(--cyan);
+  background:#22d3ee12;
+  padding:6px 10px;
+  border-radius:9px;
+  font-size:11px;
+}
+
+/* CHART */
+
+.chart{
+  height:220px;
+  display:flex;
+  align-items:flex-end;
+  gap:10px;
+  padding:15px 0 28px;
+}
+
+.bar{
+  flex:1;
+  border-radius:8px 8px 3px 3px;
+  background:linear-gradient(to top,var(--purple),var(--cyan));
+  min-width:10px;
+  position:relative;
+}
+
+.bar span{
+  position:absolute;
+  bottom:-25px;
+  width:100%;
+  text-align:center;
+  color:var(--muted);
+  font-size:11px;
+}
+
+/* TIME */
+
+.time{
+  text-align:center;
+  padding:12px;
+}
+
+.bigTime{
+  font-size:43px;
+  font-weight:bold;
+  margin:14px 0;
+  background:linear-gradient(90deg,var(--cyan),var(--purple));
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.progress{
+  height:9px;
+  background:#29263c;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.progress i{
+  display:block;
+  height:100%;
+  width:88%;
+  background:linear-gradient(90deg,var(--cyan),var(--purple));
+}
+
+/* FORMS */
+
+.form{
+  display:grid;
+  gap:13px;
+}
+
+label{
+  color:var(--muted);
+  font-size:13px;
+}
+
+input,select,textarea{
+  width:100%;
+  background:#0c0a15;
+  border:1px solid var(--line);
+  color:white;
+  border-radius:12px;
+  padding:13px;
+  outline:none;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+  border-color:var(--purple);
+}
+
+textarea{
+  min-height:110px;
+}
+
+/* TAGS */
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:18px;
+}
+
+.tag{
+  background:#8b5cf615;
+  border:1px solid #8b5cf644;
+  color:#ddd5ff;
+  border-radius:10px;
+  padding:9px 12px;
+  cursor:pointer;
+}
+
+/* IDEAS */
+
+.idea{
+  background:#0d0b18;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:15px;
+  margin-bottom:10px;
+}
+
+.idea b{
+  display:block;
+  margin-bottom:6px;
+}
+
+.idea span{
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.7;
+}
+
+/* ANALYSIS */
+
+.score{
+  width:150px;
+  height:150px;
+  margin:20px auto;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:conic-gradient(var(--cyan) 0 84%,#29263c 84%);
+}
+
+.scoreInner{
+  width:112px;
+  height:112px;
+  border-radius:50%;
+  background:var(--card);
+  display:grid;
+  place-items:center;
+  font-size:32px;
+  font-weight:bold;
+}
+
+/* MOBILE */
+
+.mobileNav{
+  display:none;
+}
+
+@media(max-width:900px){
+
+  .sidebar{
+    display:none;
+  }
+
+  .main{
+    width:100%;
+    margin:0;
+    padding:18px 14px 90px;
+  }
+
+  .stats{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .mobileNav{
+    position:fixed;
+    display:flex;
+    bottom:10px;
+    right:10px;
+    left:10px;
+    z-index:50;
+    background:#111020f5;
+    border:1px solid var(--line);
+    border-radius:19px;
+    padding:7px;
+    justify-content:space-around;
+    backdrop-filter:blur(15px);
+  }
+
+  .mobileNav button{
+    border:0;
+    background:none;
+    color:var(--muted);
+    font-size:10px;
+    padding:7px;
+  }
+
+  .mobileNav button.active{
+    color:#fff;
+  }
+
+  .top h1{
+    font-size:23px;
+  }
+}
+
+@media(max-width:520px){
 
   .hero{
-    background:linear-gradient(160deg, var(--card-hi), var(--card));
-    border:1px solid #ffffff10; border-radius:22px; padding:20px; margin-bottom:20px; position:relative; overflow:hidden;
-  }
-  .hero::after{ content:""; position:absolute; inset:0; background:radial-gradient(140px 90px at 90% 0%, #8B5CF622, transparent 70%); }
-  .hero-eyebrow{ color:var(--amber); font-size:11.5px; font-weight:600; margin-bottom:8px; }
-  .hero-title{ font-family:'Almarai'; font-weight:800; font-size:19px; line-height:1.5; margin-bottom:14px; }
-  .stat-row{ display:flex; gap:10px; }
-  .stat{ flex:1; background:#00000024; border-radius:12px; padding:10px 12px; }
-  .stat b{ display:block; font-family:'Roboto Mono'; font-size:19px; }
-  .stat span{ color:var(--muted); font-size:10.5px; }
-  .stat.up b{ color:#4ADE80; }
-
-  .plan-card{
-    background:linear-gradient(160deg, #2A1F42, #1C1629);
-    border:1.5px solid var(--violet); border-radius:22px; padding:22px; margin-bottom:18px; position:relative;
-  }
-  .plan-badge{
-    position:absolute; top:-11px; right:20px; background:linear-gradient(135deg,var(--amber),#F59E4E);
-    color:#251504; font-family:'Almarai'; font-weight:800; font-size:11px; padding:5px 14px; border-radius:100px;
-  }
-  .plan-name{ font-family:'Almarai'; font-weight:700; font-size:14px; color:var(--muted); margin-bottom:6px; }
-  .plan-price{ display:flex; align-items:baseline; gap:6px; margin-bottom:16px; }
-  .plan-price b{ font-family:'Roboto Mono'; font-size:36px; font-weight:500; }
-  .plan-price span{ color:var(--muted); font-size:13px; }
-  .plan-features{ display:flex; flex-direction:column; gap:9px; margin-bottom:18px; }
-  .plan-features div{ display:flex; align-items:center; gap:9px; font-size:12.5px; color:#DCD5EE; }
-  .plan-features div::before{ content:"✓"; color:var(--violet); font-weight:800; }
-  .plan-btn{
-    width:100%; background:linear-gradient(135deg,var(--violet),var(--coral)); border:none; border-radius:14px;
-    padding:14px; color:#fff; font-family:'Almarai'; font-weight:800; font-size:14.5px; cursor:pointer;
+    padding:20px;
   }
 
-  .toast{
-    position:absolute; bottom:26px; left:50%; transform:translateX(-50%) translateY(20px);
-    background:#4ADE80; color:#0b2318; font-family:'Almarai'; font-weight:700; font-size:13px;
-    padding:11px 18px; border-radius:100px; opacity:0; transition:all .25s ease; z-index:30; white-space:nowrap; pointer-events:none; max-width:88%; text-align:center;
+  .hero h2{
+    font-size:22px;
   }
-  .toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
 
-  .overlay{ position:absolute; inset:0; background:#05070fcc; opacity:0; pointer-events:none; transition:opacity .25s ease; z-index:20; }
-  .overlay.show{ opacity:1; pointer-events:auto; }
-  .sheet{
-    position:absolute; left:0; right:0; bottom:0; background:var(--card); border-radius:26px 26px 0 0;
-    border:1px solid #ffffff14; border-bottom:none; padding:18px 20px 26px;
-    transform:translateY(100%); transition:transform .3s cubic-bezier(.32,.72,0,1); z-index:21; max-height:88%; overflow-y:auto;
+  .stats{
+    gap:9px;
   }
-  .sheet.show{ transform:translateY(0); }
-  .sheet-handle{ width:36px; height:4px; border-radius:100px; background:#ffffff26; margin:0 auto 16px; }
-  .sheet-title{ font-family:'Almarai'; font-weight:800; font-size:17px; margin-bottom:4px; }
-  .sheet-sub{ color:var(--muted); font-size:12px; margin-bottom:18px; line-height:1.7; }
 
-  .jeeb-box{
-    background:var(--card-hi); border:1px dashed #8B5CF660; border-radius:14px; padding:16px; margin-bottom:16px; text-align:center;
+  .card{
+    padding:15px;
   }
-  .jeeb-box .jb-label{ color:var(--muted); font-size:11.5px; margin-bottom:6px; }
-  .jeeb-box .jb-amount{ font-family:'Roboto Mono'; font-size:28px; color:var(--amber); font-weight:500; }
-  .jeeb-steps{ display:flex; flex-direction:column; gap:10px; margin-bottom:18px; }
-  .jeeb-step{ display:flex; gap:10px; align-items:flex-start; font-size:12.5px; line-height:1.6; }
-  .jeeb-step .num{ width:20px; height:20px; border-radius:50%; background:var(--violet); color:#fff; font-size:11px; display:flex; align-items:center; justify-content:center; flex:none; font-family:'Roboto Mono'; }
 
-  .field{ margin-bottom:14px; }
-  .field label{ display:block; font-size:12px; color:var(--muted); margin-bottom:6px; }
-  .field input{ width:100%; background:var(--card-hi); border:1px solid #ffffff14; border-radius:12px; padding:12px 14px; color:var(--text); font-size:14px; font-family:'IBM Plex Sans Arabic'; outline:none; }
-  .field input:focus{ border-color:var(--violet); }
-  .field input::placeholder{ color:#6b6285; }
-
-  .sheet-btn{ width:100%; background:linear-gradient(135deg,var(--violet),var(--coral)); color:#fff; border:none; border-radius:14px; padding:14px; font-family:'Almarai'; font-weight:800; font-size:14.5px; cursor:pointer; margin-top:6px; }
-  .sheet-cancel{ width:100%; background:transparent; color:var(--muted); border:none; padding:12px; font-size:13px; cursor:pointer; margin-top:2px; font-family:'IBM Plex Sans Arabic'; }
-  .pay-note{ color:var(--muted); font-size:10.5px; text-align:center; margin-top:8px; line-height:1.6; }
-
-  /* Growth tools dashboard (shown after activation) */
-  .dash{ display:none; margin-bottom:18px; }
-  .dash.show{ display:block; }
-  .dash-title{ font-family:'Almarai'; font-weight:700; font-size:14.5px; margin-bottom:12px; display:flex; align-items:center; gap:6px; }
-  .dash-title span.tag{ background:linear-gradient(135deg,#4ADE80,#22C55E); color:#0b2318; font-size:10px; font-weight:800; padding:3px 9px; border-radius:100px; font-family:'IBM Plex Sans Arabic'; }
-  .tool-grid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-  .tool-btn{
-    background:var(--card); border:1px solid #ffffff10; border-radius:16px; padding:14px 12px;
-    display:flex; flex-direction:column; gap:8px; cursor:pointer; transition:border-color .15s ease, transform .1s ease;
+  .statValue{
+    font-size:22px;
   }
-  .tool-btn:active{ transform:scale(0.97); }
-  .tool-btn .icon{ width:34px; height:34px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:16px; }
-  .tool-btn .label{ font-size:12.5px; font-weight:600; }
-  .tool-btn .desc{ color:var(--muted); font-size:10.5px; line-height:1.5; }
-  .tool-btn.wide{ grid-column:1 / -1; flex-direction:row; align-items:center; }
-  .tool-btn.wide .icon{ flex:none; }
-  .tool-btn.wide .txt{ flex:1; }
-
-  .mini-sheet-body{ font-size:13px; line-height:1.8; color:#DCD5EE; }
-  .mini-sheet-body .row{ display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid #ffffff0d; }
-  .mini-sheet-body .row:last-child{ border-bottom:none; }
-  .mini-sheet-body .row b{ font-family:'Roboto Mono'; color:var(--amber); font-weight:500; }
+}
 </style>
 </head>
+
 <body>
 
-<div class="phone">
-  <div class="notch"></div>
-  <div class="screen">
+<div class="app">
 
-    <div class="top-row">
-      <div class="logo">
-        <div class="logo-mark">🚀</div>
-        <div class="logo-txt">نمو</div>
-      </div>
-      <div style="display:flex; align-items:center; gap:10px;">
-        <a href="https://wa.me/966780030066?text=مرحبًا، أبي أستفسر عن نمو" target="_blank" style="text-decoration:none; width:38px; height:38px; border-radius:12px; background:linear-gradient(135deg,#25D366,#1DA851); display:flex; align-items:center; justify-content:center; font-size:17px;">💬</a>
-        <div class="avatar">س</div>
-      </div>
+<!-- القائمة -->
+<aside class="sidebar">
+
+  <div class="logo">
+    <div class="logoIcon">ن</div>
+    <div>
+      <strong>نمو</strong>
+      <small>نمو حقيقي 2.0</small>
     </div>
+  </div>
+
+  <nav class="nav">
+    <button class="active" onclick="show('home',this)">🏠 الرئيسية</button>
+    <button onclick="show('analytics',this)">📊 تحليل الحساب</button>
+    <button onclick="show('hashtags',this)">#️⃣ الهاشتاقات</button>
+    <button onclick="show('timing',this)">⏰ أفضل وقت</button>
+    <button onclick="show('ideas',this)">💡 أفكار المحتوى</button>
+  </nav>
+
+  <div class="sideBottom">
+    <div class="online">
+      <i class="dot"></i>
+      النظام يعمل
+    </div>
+    <div style="font-size:12px;margin-top:8px">
+      🚀 نمو حقيقي بدون متابعين وهميين
+    </div>
+  </div>
+
+</aside>
+
+<!-- المحتوى -->
+<main class="main">
+
+  <header class="top">
+    <div>
+      <h1 id="title">لوحة التحكم</h1>
+      <p>خلّ حسابك ينمو بذكاء 🚀</p>
+    </div>
+
+    <div class="account">
+      <div class="avatar">ن</div>
+      <span>حسابي</span>
+    </div>
+  </header>
+
+  <!-- الرئيسية -->
+  <section id="home" class="section active">
 
     <div class="hero">
-      <div class="hero-eyebrow">تحليل حسابك</div>
-      <div class="hero-title">حساب @sultan.store جاهز يكسب متابعين حقيقيين</div>
-      <div class="stat-row">
-        <div class="stat up"><b>+312</b><span>متابع هذا الأسبوع</span></div>
-        <div class="stat"><b>4.2%</b><span>معدل التفاعل</span></div>
-        <div class="stat"><b>8:00م</b><span>أفضل وقت نشر</span></div>
-      </div>
+      <small>✨ تحليل ذكي لحسابك</small>
+      <h2>جاهز تبدأ نموك الحقيقي؟ 🚀</h2>
+      <p>
+        اكتشف أفضل وقت للنشر، احصل على هاشتاقات مناسبة لمجالك،
+        واعرف كيف تطور محتواك وتزيد وصولك.
+      </p>
+
+      <button class="primary" onclick="analyze()">
+        حلّل حسابي 🚀
+      </button>
     </div>
 
-    <div class="plan-card">
-      <div class="plan-badge">الخطة الاحترافية</div>
-      <div class="plan-name">اشتراك نمو الشهري</div>
-      <div class="plan-price"><b>2000</b><span>ريال / شهريًا</span></div>
-      <div class="plan-features">
-        <div>تحليل كامل + جدولة محتوى غير محدودة</div>
-        <div>تقرير أسبوعي مفصّل عن نمو حسابك</div>
-        <div>اقتراح هاشتاقات مخصصة لمجالك</div>
-        <div>تحليل 5 من أقوى المنافسين في مجالك</div>
-        <div>دعم مباشر عبر واتساب</div>
+    <div class="stats">
+
+      <div class="card">
+        <div class="statTitle">المتابعون</div>
+        <div class="statValue">12,840</div>
+        <div class="green">↑ 8.4% هذا الشهر</div>
       </div>
-      <button class="plan-btn" id="openPayBtn">اشترك الآن</button>
+
+      <div class="card">
+        <div class="statTitle">الوصول</div>
+        <div class="statValue">84.6K</div>
+        <div class="green">↑ 14.2%</div>
+      </div>
+
+      <div class="card">
+        <div class="statTitle">التفاعل</div>
+        <div class="statValue">7.8%</div>
+        <div class="green">↑ 2.1%</div>
+      </div>
+
+      <div class="card">
+        <div class="statTitle">قوة الحساب</div>
+        <div class="statValue">84/100</div>
+        <div class="green">ممتاز 🔥</div>
+      </div>
+
     </div>
 
-    <div class="dash" id="growthDash">
-      <div class="dash-title">أدوات نمو حسابك <span class="tag">Premium</span></div>
-      <div class="tool-grid">
-        <div class="tool-btn" id="toolSchedule">
-          <div class="icon" style="background:#8B5CF622;">🗓️</div>
-          <div class="label">جدولة محتوى</div>
-          <div class="desc">جهّز منشورات الأسبوع مقدمًا</div>
+    <div class="grid">
+
+      <div class="card">
+        <div class="cardHead">
+          <h3>نمو المتابعين</h3>
+          <span class="badge">آخر 7 أيام</span>
         </div>
-        <div class="tool-btn" id="toolHashtag">
-          <div class="icon" style="background:#FBBF6322;">#️⃣</div>
-          <div class="label">اقتراح هاشتاقات</div>
-          <div class="desc">هاشتاقات مخصصة لمجالك</div>
+
+        <div class="chart">
+          <div class="bar" style="height:35%"><span>س</span></div>
+          <div class="bar" style="height:45%"><span>ح</span></div>
+          <div class="bar" style="height:51%"><span>ن</span></div>
+          <div class="bar" style="height:60%"><span>ث</span></div>
+          <div class="bar" style="height:68%"><span>ر</span></div>
+          <div class="bar" style="height:78%"><span>خ</span></div>
+          <div class="bar" style="height:92%"><span>ج</span></div>
         </div>
-        <div class="tool-btn" id="toolCompetitor">
-          <div class="icon" style="background:#FB718522;">🔍</div>
-          <div class="label">تحليل المنافسين</div>
-          <div class="desc">شوف وش ينشر الناجحين بمجالك</div>
+      </div>
+
+      <div class="card">
+
+        <div class="cardHead">
+          <h3>أفضل وقت اليوم</h3>
+          <span class="badge">ذكي</span>
         </div>
-        <div class="tool-btn" id="toolBestTime">
-          <div class="icon" style="background:#4ADE8022;">⏰</div>
-          <div class="label">أفضل وقت نشر</div>
-          <div class="desc">اعرف وقت تفاعل جمهورك</div>
-        </div>
-        <div class="tool-btn wide" id="toolReport">
-          <div class="icon" style="background:#8B5CF622;">📊</div>
-          <div class="txt">
-            <div class="label">التقرير الأسبوعي</div>
-            <div class="desc">ملخص كامل عن نمو حسابك هذا الأسبوع</div>
+
+        <div class="time">
+          <div style="color:var(--muted)">أفضل فرصة للنشر</div>
+
+          <div class="bigTime">8:30 م</div>
+
+          <div style="color:var(--muted);margin-bottom:10px">
+            احتمالية تفاعل عالية
+          </div>
+
+          <div class="progress">
+            <i></i>
+          </div>
+
+          <div style="color:var(--cyan);margin-top:9px">
+            88% ثقة
           </div>
         </div>
+
       </div>
-      <a href="numow-landing.html" target="_blank" style="text-decoration:none;">
-        <button class="plan-btn" style="margin-top:14px; background:linear-gradient(135deg,#4ADE80,#22C55E);">شوف كل المزايا والتفاصيل ↗</button>
-      </a>
+
     </div>
 
-    <div class="overlay" id="overlay"></div>
+  </section>
 
-    <!-- Mini info sheets for growth tools -->
-    <div class="sheet" id="toolSheet">
-      <div class="sheet-handle"></div>
-      <div class="sheet-title" id="toolSheetTitle">أداة</div>
-      <div id="hashtagSearchBox" style="display:none; margin-bottom:14px;">
-        <div style="display:flex; gap:8px;">
-          <input type="text" id="hashtagInput" placeholder="اكتب كلمة عن مجالك (مثال: عطور، قهوة، ملابس)" style="flex:1; background:var(--card-hi); border:1px solid #ffffff14; border-radius:12px; padding:12px 14px; color:var(--text); font-size:13px; font-family:'IBM Plex Sans Arabic'; outline:none;">
-          <button id="hashtagSearchBtn" style="background:linear-gradient(135deg,var(--violet),var(--coral)); border:none; border-radius:12px; padding:0 18px; color:#fff; font-family:'Almarai'; font-weight:800; font-size:13px; cursor:pointer;">ابحث</button>
+  <!-- التحليل -->
+  <section id="analytics" class="section">
+
+    <div class="grid">
+
+      <div class="card">
+        <div class="cardHead">
+          <h3>درجة الحساب</h3>
+          <span class="badge">تحليل نمو</span>
         </div>
+
+        <div class="score">
+          <div class="scoreInner">84</div>
+        </div>
+
+        <p style="text-align:center;color:var(--muted);line-height:1.8">
+          حسابك جيد جدًا، ويمكن رفع التفاعل والوصول أكثر.
+        </p>
       </div>
-      <div class="mini-sheet-body" id="toolSheetBody"></div>
-      <button class="sheet-cancel" id="closeToolSheet">إغلاق</button>
+
+      <div class="card">
+
+        <div class="cardHead">
+          <h3>توصيات نموك</h3>
+        </div>
+
+        <div class="idea">
+          <b>🔥 ركّز على Reels</b>
+          <span>الفيديوهات القصيرة مناسبة لزيادة الوصول.</span>
+        </div>
+
+        <div class="idea">
+          <b>⏰ جرّب 8:30 مساءً</b>
+          <span>هذا وقت تجريبي مقترح بناءً على نشاط الجمهور.</span>
+        </div>
+
+        <div class="idea">
+          <b>#️⃣ استخدم هاشتاقات متخصصة</b>
+          <span>اخلط بين هاشتاقات المجال والهاشتاقات الأقل منافسة.</span>
+        </div>
+
+      </div>
+
     </div>
 
-    <div class="sheet" id="paySheet">
-      <div class="sheet-handle"></div>
-      <div class="sheet-title">إتمام الاشتراك عبر جيب</div>
-      <div class="sheet-sub">حوّل المبلغ عبر محفظة جيب، وبعدها أكّد التحويل بالأسفل عشان نفعّل اشتراكك خلال دقائق.</div>
+  </section>
 
-      <div class="jeeb-box">
-        <div class="jb-label">حوّل المبلغ على رقم جيب التالي</div>
-        <div class="jb-amount" style="font-size:22px; margin-bottom:6px;">777200922</div>
-        <div class="jb-label">المبلغ المطلوب تحويله</div>
-        <div class="jb-amount">2000 ريال</div>
-        <a href="https://wa.me/966780030066?text=مرحبًا، حولت المبلغ للاشتراك في نمو وهذا إثبات التحويل" target="_blank" style="text-decoration:none; display:inline-flex; align-items:center; gap:6px; margin-top:14px; background:linear-gradient(135deg,#25D366,#1DA851); color:#fff; padding:9px 16px; border-radius:100px; font-size:11.5px; font-family:'Almarai'; font-weight:700;">💬 أرسل إثبات التحويل مباشرة</a>
-      </div>
+  <!-- الهاشتاقات -->
+  <section id="hashtags" class="section">
 
-      <div class="jeeb-steps">
-        <div class="jeeb-step"><div class="num">1</div>افتح تطبيق جيب واختر "تحويل"</div>
-        <div class="jeeb-step"><div class="num">2</div>حوّل 2000 ريال على الرقم 777200922 الموضح فوق</div>
-        <div class="jeeb-step"><div class="num">3</div>عبّي بياناتك تحت وأرسل رقم عملية التحويل</div>
+    <div class="card">
+
+      <div class="cardHead">
+        <h3>مولّد الهاشتاقات الذكي #️⃣</h3>
+        <span class="badge">مخصص لمجالك</span>
       </div>
 
-      <div class="field">
-        <label>الاسم</label>
-        <input type="text" id="inpName" placeholder="اكتب اسمك">
-      </div>
-      <div class="field">
-        <label>رقم الجوال</label>
-        <input type="tel" id="inpPhone" placeholder="05xxxxxxxx">
-      </div>
-      <div class="field">
-        <label>رقم عملية التحويل (من تطبيق جيب)</label>
-        <input type="text" id="inpRef" placeholder="مثال: JB-2938471">
-      </div>
+      <div class="form">
 
-      <div class="field" id="codeField" style="display:none;">
-        <label>كود التفعيل (وصلك عبر واتساب)</label>
-        <input type="text" id="inpCode" placeholder="اكتب الكود هنا">
-      </div>
+        <label>ما موضوع المحتوى؟</label>
 
-      <button class="sheet-btn" id="confirmBtn">تأكيد إرسال التحويل</button>
-      <button class="sheet-btn" id="activateBtn" style="display:none; background:linear-gradient(135deg,#4ADE80,#22C55E);">تفعيل الكود</button>
-      <a href="https://wa.me/966780030066?text=مرحبًا، أبي أكمل اشتراكي في نمو" target="_blank" style="text-decoration:none;">
-        <button class="sheet-btn" id="whatsappBtn" style="background:linear-gradient(135deg,#25D366,#1DA851); margin-top:10px;">
-          💬 تواصل عبر واتساب وخذ الكود
+        <input
+          id="topic"
+          placeholder="مثال: صيانة جوالات، عطور، مطاعم، تقنية"
+        >
+
+        <label>نوع المحتوى</label>
+
+        <select id="type">
+          <option>Reels</option>
+          <option>منشور</option>
+          <option>قصة</option>
+          <option>تعليمي</option>
+          <option>تجاري</option>
+        </select>
+
+        <button class="primary" onclick="hashtags()">
+          توليد الهاشتاقات ✨
         </button>
-      </a>
-      <button class="sheet-cancel" id="cancelBtn">إلغاء</button>
-      <div class="pay-note">شاشة تصميم تجريبية لعرض الفكرة — لا يتم أي تحويل فعلي من هنا.</div>
+
+      </div>
+
+      <div id="tags" class="tags"></div>
+
+      <button
+        class="primary"
+        style="margin-top:15px"
+        onclick="copyTags()"
+      >
+        📋 نسخ الكل
+      </button>
+
     </div>
 
-    <div class="toast" id="toast">✅ تم استلام طلبك، بنفعّل اشتراكك خلال دقائق</div>
+  </section>
 
-  </div>
+  <!-- الوقت -->
+  <section id="timing" class="section">
+
+    <div class="card">
+
+      <div class="cardHead">
+        <h3>أفضل أوقات النشر ⏰</h3>
+        <span class="badge">تجريبي</span>
+      </div>
+
+      <div class="stats">
+
+        <div class="card">
+          <div class="statTitle">الأحد</div>
+          <div class="statValue">8:30 م</div>
+          <div class="green">92% فرصة</div>
+        </div>
+
+        <div class="card">
+          <div class="statTitle">الثلاثاء</div>
+          <div class="statValue">9:00 م</div>
+          <div class="green">89% فرصة</div>
+        </div>
+
+        <div class="card">
+          <div class="statTitle">الخميس</div>
+          <div class="statValue">8:00 م</div>
+          <div class="green">87% فرصة</div>
+        </div>
+
+        <div class="card">
+          <div class="statTitle">الجمعة</div>
+          <div class="statValue">7:30 م</div>
+          <div class="green">84% فرصة</div>
+        </div>
+
+      </div>
+
+      <p style="color:var(--muted);line-height:1.9">
+        ⚠️ الأوقات الحالية تجريبية. عند ربط الحساب الحقيقي،
+        سيتم تحليل نشاط جمهورك ونتائج منشوراتك لإظهار أوقات أكثر دقة.
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- الأفكار -->
+  <section id="ideas" class="section">
+
+    <div class="card">
+
+      <div class="cardHead">
+        <h3>أفكار محتوى 💡</h3>
+
+        <button class="primary" onclick="ideas()">
+          تحديث الأفكار
+        </button>
+      </div>
+
+      <div id="ideaList">
+
+        <div class="idea">
+          <b>🎥 3 أخطاء تمنع حسابك من النمو</b>
+          <span>ابدأ بسؤال قوي، ثم اعرض الأخطاء والحلول بسرعة.</span>
+        </div>
+
+        <div class="idea">
+          <b>🔥 قبل وبعد</b>
+          <span>اعرض الفرق بين الطريقة العادية والطريقة الاحترافية.</span>
+        </div>
+
+        <div class="idea">
+          <b>🎯 معلومة في 20 ثانية</b>
+          <span>شارك معلومة مفيدة جدًا لجمهورك بطريقة سريعة.</span>
+        </div>
+
+        <div class="idea">
+          <b>💬 سؤال للجمهور</b>
+          <span>اطرح سؤالًا يجعل المتابعين يشاركون في التعليقات.</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
 </div>
 
+<!-- شريط الجوال -->
+
+<nav class="mobileNav">
+
+  <button class="active" onclick="show('home',this)">
+    🏠<br>الرئيسية
+  </button>
+
+  <button onclick="show('analytics',this)">
+    📊<br>التحليل
+  </button>
+
+  <button onclick="show('hashtags',this)">
+    #️⃣<br>هاشتاق
+  </button>
+
+  <button onclick="show('timing',this)">
+    ⏰<br>الوقت
+  </button>
+
+  <button onclick="show('ideas',this)">
+    💡<br>أفكار
+  </button>
+
+</nav>
+
 <script>
-  const overlay = document.getElementById('overlay');
-  const paySheet = document.getElementById('paySheet');
-  const openPayBtn = document.getElementById('openPayBtn');
-  const cancelBtn = document.getElementById('cancelBtn');
-  const confirmBtn = document.getElementById('confirmBtn');
-  const toast = document.getElementById('toast');
 
-  function openSheet(){ overlay.classList.add('show'); paySheet.classList.add('show'); }
-  function closeSheet(){ overlay.classList.remove('show'); paySheet.classList.remove('show'); }
+const titles={
+  home:"لوحة التحكم",
+  analytics:"تحليل الحساب",
+  hashtags:"الهاشتاقات الذكية",
+  timing:"أفضل وقت للنشر",
+  ideas:"أفكار المحتوى"
+};
 
-  openPayBtn.addEventListener('click', openSheet);
-  cancelBtn.addEventListener('click', closeSheet);
-  overlay.addEventListener('click', closeSheet);
+function show(id,btn){
 
-  const activateBtn = document.getElementById('activateBtn');
-  const codeField = document.getElementById('codeField');
-  const planBadge = document.querySelector('.plan-badge');
+  document.querySelectorAll(".section")
+    .forEach(x=>x.classList.remove("active"));
 
-  confirmBtn.addEventListener('click', ()=>{
-    const name = document.getElementById('inpName').value.trim();
-    const phone = document.getElementById('inpPhone').value.trim();
-    const ref = document.getElementById('inpRef').value.trim();
-    if(!name || !phone || !ref){
-      window.open('https://wa.me/966780030066?text=' + encodeURIComponent('مرحبًا، أبي أكمل اشتراكي في نمو وما قدرت أعبي النموذج'), '_blank');
-      return;
-    }
-    // إخفاء زر التأكيد وإظهار حقل الكود لإدخاله بعد وصوله عبر واتساب
-    confirmBtn.style.display = 'none';
-    document.getElementById('whatsappBtn').style.display = 'none';
-    codeField.style.display = 'block';
-    activateBtn.style.display = 'block';
-    toast.textContent = '📨 تم إرسال طلبك، بيوصلك الكود عبر واتساب قريبًا';
-    toast.classList.add('show');
-    setTimeout(()=> toast.classList.remove('show'), 2600);
+  document.getElementById(id)
+    .classList.add("active");
+
+  document.querySelectorAll(".nav button,.mobileNav button")
+    .forEach(x=>x.classList.remove("active"));
+
+  if(btn) btn.classList.add("active");
+
+  document.getElementById("title").textContent=titles[id];
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
   });
+}
 
-  activateBtn.addEventListener('click', ()=>{
-    const code = document.getElementById('inpCode').value.trim();
-    if(!code){
-      activateBtn.textContent = 'أدخل الكود أولاً';
-      setTimeout(()=> activateBtn.textContent = 'تفعيل الكود', 1300);
-      return;
-    }
-    closeSheet();
-    planBadge.textContent = '✓ مفعّل';
-    planBadge.style.background = 'linear-gradient(135deg,#4ADE80,#22C55E)';
-    planBadge.style.color = '#0b2318';
-    growthDash.classList.add('show');
+function analyze(){
 
-    // تعطيل زر الاشتراك حتى لا يكرر الزبون العملية بنفس الجلسة
-    openPayBtn.textContent = '✓ مشترك بالفعل';
-    openPayBtn.disabled = true;
-    openPayBtn.style.opacity = '0.6';
-    openPayBtn.style.cursor = 'not-allowed';
-    openPayBtn.removeEventListener('click', openSheet);
+  show("analytics");
 
-    // حفظ حالة التفعيل محليًا على نفس الجهاز/المتصفح
-    try{
-      localStorage.setItem('numow_activated', 'true');
-      localStorage.setItem('numow_activated_date', new Date().toISOString());
-    }catch(e){}
+  setTimeout(()=>{
+    alert(
+      "🚀 اكتمل التحليل التجريبي\\n\\n"+
+      "قوة الحساب: 84/100\\n"+
+      "أفضل وقت: 8:30 مساءً\\n"+
+      "المحتوى المقترح: Reels\\n"+
+      "الهاشتاقات: متخصصة + منخفضة المنافسة"
+    );
+  },300);
 
-    toast.textContent = '🎉 تم تفعيل اشتراكك بنجاح!';
-    toast.classList.add('show');
-    setTimeout(()=> toast.classList.remove('show'), 2600);
-  });
+}
 
-  // أدوات النمو
-  const growthDash = document.getElementById('growthDash');
-  const toolSheet = document.getElementById('toolSheet');
-  const toolSheetTitle = document.getElementById('toolSheetTitle');
-  const toolSheetBody = document.getElementById('toolSheetBody');
-  const closeToolSheet = document.getElementById('closeToolSheet');
+function hashtags(){
 
-  const toolsData = {
-    toolSchedule: {
-      title: '🗓️ جدولة محتوى',
-      rows: [
-        ['الأحد', 'صورة منتج جديد — 8:00م'],
-        ['الثلاثاء', 'ريلز خلف الكواليس — 7:30م'],
-        ['الخميس', 'عرض/خصم نهاية الأسبوع — 8:15م']
-      ]
-    },
-    toolHashtag: {
-      title: '#️⃣ هاشتاقات مقترحة',
-      rows: [
-        ['عالية الوصول', '#تسوق_السعودية'],
-        ['عالية الوصول', '#السعودية'],
-        ['عالية الوصول', '#الرياض'],
-        ['متوسطة المنافسة', '#متجر_الكتروني'],
-        ['متوسطة المنافسة', '#تسوق_اونلاين'],
-        ['متوسطة المنافسة', '#عروض_اليوم'],
-        ['مخصصة لمجالك', '#sultan_store'],
-        ['مخصصة لمجالك', '#تسوق_ذكي'],
-        ['منخفضة المنافسة', '#دعم_المتاجر_المحلية'],
-        ['ترند حاليًا', '#فويو_السعودية']
-      ]
-    },
-    toolCompetitor: {
-      title: '🔍 تحليل المنافسين',
-      rows: [
-        ['منافس 1', '+18% نمو شهري'],
-        ['منافس 2', 'ينشر 5 مرات أسبوعيًا'],
-        ['منافس 3', 'يعتمد على الريلز بشكل أساسي']
-      ]
-    },
-    toolBestTime: {
-      title: '⏰ أفضل وقت للنشر',
-      rows: [
-        ['الأحد - الأربعاء', '5:00م - 6:00م'],
-        ['الأحد - الأربعاء', '8:00م - 9:00م'],
-        ['الخميس - الجمعة', '4:00م - 6:00م'],
-        ['أفضل وقت مطلق', '5:00م (أعلى نسبة مشاهدة)'],
-        ['أعلى تفاعل', 'مساءً بعد صلاة العشاء'],
-        ['وقت مناسب بديل', '11:00ص - 12:00م (فترة الغداء)']
-      ]
-    },
-    toolReport: {
-      title: '📊 التقرير الأسبوعي',
-      rows: [
-        ['متابعين جدد', '+312'],
-        ['معدل التفاعل', '4.2%'],
-        ['أفضل منشور', 'ريلز الثلاثاء (2.1k مشاهدة)']
-      ]
-    }
-  };
+  const topic=
+    document.getElementById("topic")
+    .value
+    .trim()
+    .replace(/\\s+/g,"_");
 
-  const hashtagSearchBox = document.getElementById('hashtagSearchBox');
-  const hashtagInput = document.getElementById('hashtagInput');
-  const hashtagSearchBtn = document.getElementById('hashtagSearchBtn');
+  if(!topic){
 
-  const hashtagTemplates = [
-    ['عالية الوصول', k => `#${k}_السعودية`],
-    ['عالية الوصول', k => `#السعودية`],
-    ['عالية الوصول', k => `#الرياض`],
-    ['متوسطة المنافسة', k => `#متجر_${k}`],
-    ['متوسطة المنافسة', k => `#${k}_اونلاين`],
-    ['متوسطة المنافسة', k => `#عروض_${k}`],
-    ['مخصصة لمجالك', k => `#${k}_الخليج`],
-    ['مخصصة لمجالك', k => `#تسوق_${k}`],
-    ['منخفضة المنافسة', k => `#دعم_محلي_${k}`],
-    ['ترند حاليًا', k => `#فويو_${k}`]
-  ];
+    alert("اكتب مجال المحتوى أولاً ✨");
+    return;
 
-  function renderHashtags(keyword){
-    const rows = hashtagTemplates.map(([label, fn]) => [label, fn(keyword)]);
-    toolSheetBody.innerHTML = rows.map(r=>`<div class="row"><span>${r[0]}</span><b>${r[1]}</b></div>`).join('');
   }
 
-  hashtagSearchBtn.addEventListener('click', ()=>{
-    const kw = hashtagInput.value.trim().replace(/\s+/g,'_') || 'متجرك';
-    renderHashtags(kw);
-  });
+  const arr=[
+    "#"+topic,
+    "#"+topic+"_السعودية",
+    "#"+topic+"_عربي",
+    "#"+topic+"_نصائح",
+    "#"+topic+"_تعليم",
+    "#"+topic+"_اونلاين",
+    "#متخصص_"+topic,
+    "#محتوى_"+topic,
+    "#ريلز",
+    "#انستقرام",
+    "#صناعة_المحتوى",
+    "#نمو"
+  ];
 
-  Object.keys(toolsData).forEach(id=>{
-    document.getElementById(id).addEventListener('click', ()=>{
-      const data = toolsData[id];
-      toolSheetTitle.textContent = data.title;
-      if(id === 'toolHashtag'){
-        hashtagSearchBox.style.display = 'block';
-        hashtagInput.value = '';
-        renderHashtags('متجرك');
-      } else {
-        hashtagSearchBox.style.display = 'none';
-        toolSheetBody.innerHTML = data.rows.map(r=>`<div class="row"><span>${r[0]}</span><b>${r[1]}</b></div>`).join('');
-      }
-      overlay.classList.add('show');
-      toolSheet.classList.add('show');
-    });
-  });
+  document.getElementById("tags").innerHTML=
+    arr.map(x=>
+      `<span class="tag" onclick="copyOne('${x}')">${x}</span>`
+    ).join("");
 
-  closeToolSheet.addEventListener('click', ()=>{
-    overlay.classList.remove('show');
-    toolSheet.classList.remove('show');
-  });
+}
 
-  // استعادة حالة التفعيل لو الزبون فتح الصفحة سابقًا وفعّل اشتراكه (على نفس الجهاز والمتصفح)
-  try{
-    if(localStorage.getItem('numow_activated') === 'true'){
-      planBadge.textContent = '✓ مفعّل';
-      planBadge.style.background = 'linear-gradient(135deg,#4ADE80,#22C55E)';
-      planBadge.style.color = '#0b2318';
-      growthDash.classList.add('show');
-      openPayBtn.textContent = '✓ مشترك بالفعل';
-      openPayBtn.disabled = true;
-      openPayBtn.style.opacity = '0.6';
-      openPayBtn.style.cursor = 'not-allowed';
-    }
-  }catch(e){}
+function copyOne(text){
+
+  navigator.clipboard.writeText(text);
+
+  alert("تم نسخ "+text+" ✅");
+
+}
+
+function copyTags(){
+
+  const arr=[
+    ...document.querySelectorAll("#tags .tag")
+  ].map(x=>x.textContent);
+
+  if(!arr.length){
+
+    alert("ولّد الهاشتاقات أولاً");
+    return;
+
+  }
+
+  navigator.clipboard.writeText(arr.join(" "));
+
+  alert("تم نسخ جميع الهاشتاقات ✅");
+
+}
+
+function ideas(){
+
+  const data=[
+
+    [
+      "🎬 تحدي 7 أيام",
+      "وثّق تجربة لمدة أسبوع وشارك النتيجة مع جمهورك."
+    ],
+
+    [
+      "🔥 أكبر خطأ في مجالك",
+      "اذكر خطأ مشهور ثم أعطِ الحل في أقل من 30 ثانية."
+    ],
+
+    [
+      "💎 معلومة لا يعرفها الكثير",
+      "شارك معلومة قوية تجعل المشاهد يحفظ الفيديو."
+    ],
+
+    [
+      "📱 خلف الكواليس",
+      "أظهر كيف تعمل أو كيف تصنع منتجك بطريقة ممتعة."
+    ],
+
+    [
+      "💬 جاوب على سؤال متابع",
+      "حوّل سؤالًا حقيقيًا من التعليقات إلى فيديو."
+    ]
+
+  ];
+
+  data.sort(()=>Math.random()-.5);
+
+  document.getElementById("ideaList").innerHTML=
+    data.slice(0,4).map(x=>`
+      <div class="idea">
+        <b>${x[0]}</b>
+        <span>${x[1]}</span>
+      </div>
+    `).join("");
+
+}
+
 </script>
 
 </body>
